@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.7);
+}
+
+/* ============================================================
+   LIGHT MODE — applied when <html> has the .light class
+   Overrides every dark utility used across the portfolio.
+   ============================================================ */
+
+html.light {
+  color-scheme: light;
+}
+
+html.light body {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+/* ── Background & surface overrides ── */
+html.light .bg-black {
+  background-color: #f1f5f9 !important;
+}
+
+html.light .bg-black\/60 {
+  background-color: rgba(241, 245, 249, 0.92) !important;
+}
+
+html.light .bg-black\/80 {
+  background-color: rgba(241, 245, 249, 0.97) !important;
+}
+
+/* Glass card fills */
+html.light .bg-white\/5  { background-color: rgba(15, 23, 42, 0.04) !important; }
+html.light .bg-white\/8  { background-color: rgba(15, 23, 42, 0.06) !important; }
+html.light .bg-white\/10 { background-color: rgba(15, 23, 42, 0.07) !important; }
+html.light .bg-white\/15 { background-color: rgba(15, 23, 42, 0.09) !important; }
+html.light .bg-white\/20 { background-color: rgba(15, 23, 42, 0.12) !important; }
+
+/* Hover glass states */
+html.light .hover\:bg-white\/8:hover  { background-color: rgba(15, 23, 42, 0.07) !important; }
+html.light .hover\:bg-white\/15:hover { background-color: rgba(15, 23, 42, 0.1) !important;  }
+html.light .hover\:bg-white\/20:hover { background-color: rgba(15, 23, 42, 0.13) !important; }
+
+/* ── Border overrides ── */
+html.light .border-white\/10 { border-color: rgba(15, 23, 42, 0.1)  !important; }
+html.light .border-white\/20 { border-color: rgba(15, 23, 42, 0.15) !important; }
+html.light .border-white\/40 { border-color: rgba(15, 23, 42, 0.3)  !important; }
+
+/* Hover border states */
+html.light .hover\:border-white\/20:hover { border-color: rgba(15, 23, 42, 0.18) !important; }
+html.light .hover\:border-white\/25:hover { border-color: rgba(15, 23, 42, 0.22) !important; }
+html.light .hover\:border-white\/40:hover { border-color: rgba(15, 23, 42, 0.32) !important; }
+
+/* Specific project card border colours stay colour-accented — no override needed */
+
+/* ── Text overrides ── */
+html.light .text-white               { color: #0f172a !important; }
+html.light .text-gray-400            { color: #475569 !important; }
+html.light .text-gray-500            { color: #64748b !important; }
+html.light .text-gray-600            { color: #64748b !important; }
+
+/* Hover text */
+html.light .hover\:text-white:hover  { color: #0f172a !important; }
+
+/* ── Shadow overrides ── */
+html.light .shadow-black\/20 {
+  --tw-shadow-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+/* ── Floating orbs — subtler on a light background ── */
+html.light .bg-cyan-500\/15   { background-color: rgba(6, 182, 212, 0.09)  !important; }
+html.light .bg-purple-500\/15 { background-color: rgba(168, 85, 247, 0.09) !important; }
+html.light .bg-blue-500\/10   { background-color: rgba(59, 130, 246, 0.06) !important; }
+
+/* ── Scrollbar in light mode ── */
+html.light::-webkit-scrollbar-track { background: #e2e8f0; }
+html.light::-webkit-scrollbar-thumb { background: rgba(6, 182, 212, 0.5); }
+
+/* ── Hero photo card (light mode) ── */
+html.light .border-white\/15 { border-color: rgba(15, 23, 42, 0.12) !important; }
+html.light .bg-black\/50     { background-color: rgba(241, 245, 249, 0.7) !important; }
+html.light .shadow-black\/40 { --tw-shadow-color: rgba(15, 23, 42, 0.18) !important; }
+
+/* Keep gradient glow visible in light mode */
+html.light .from-cyan-500\/30   { --tw-gradient-from: rgba(6, 182, 212, 0.12) !important; }
+html.light .to-purple-500\/30   { --tw-gradient-to: rgba(168, 85, 247, 0.12) !important; }
+html.light .via-blue-500\/20    { --tw-gradient-via: rgba(59, 130, 246, 0.08) !important; }
+html.light .border-cyan-400\/20 { border-color: rgba(6, 182, 212, 0.12) !important; }
+
+/* Hide interactive dark spotlight in light mode */
+html.light .spotlight-effect { display: none !important; }
+
+
+
