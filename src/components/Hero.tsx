@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import type { MouseEvent } from "react";
 

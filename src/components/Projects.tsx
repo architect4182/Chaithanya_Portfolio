@@ -1,6 +1,6 @@
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react";
 import BrowserMockup from "./BrowserMockup";
 
 const projects = [
