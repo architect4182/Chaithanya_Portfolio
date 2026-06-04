@@ -31,13 +31,17 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "backdrop-blur-2xl bg-black/60 border-b border-white/10 shadow-lg shadow-black/20"
-          : "bg-transparent"
-      }`}
-    >
+    <>
+      {/* Spacer to prevent content from hiding behind fixed navbar */}
+      <div className="h-[76px] w-full" aria-hidden="true" />
+      
+      <nav
+        className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ${
+          scrolled
+            ? "backdrop-blur-md bg-black/80 border-b border-white/10 shadow-lg shadow-black/20"
+            : "bg-transparent"
+        }`}
+      >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <a href="#" className="font-bold text-xl tracking-tight">
@@ -120,5 +124,6 @@ export default function Navbar() {
         </div>
       )}
     </nav>
+    </>
   );
 }

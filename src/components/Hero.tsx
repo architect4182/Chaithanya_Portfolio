@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
-import { ArrowRight, Download, ChevronDown } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { useState } from "react";
 import type { MouseEvent } from "react";
 
@@ -185,7 +185,7 @@ export default function Hero() {
 
                 {/* Name chip at bottom of image */}
                 <div className="absolute bottom-4 left-4 right-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-sm text-white font-medium">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(0,0,0,0.5)] backdrop-blur-md border border-[rgba(255,255,255,0.1)] text-sm text-[#ffffff] font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                     Available for opportunities
                   </div>
@@ -207,7 +207,7 @@ export default function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: badge.delay, ease: "easeOut" }}
                 whileHover={{ scale: 1.1, y: -2 }}
-                className={`absolute ${badge.pos} hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl bg-white/10 border border-white/20 text-xs font-semibold text-white shadow-lg z-10`}
+                className={`absolute ${badge.pos} hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl bg-[rgba(255,255,255,0.1)] border border-[rgba(255,255,255,0.2)] text-xs font-semibold text-[#ffffff] shadow-lg z-10`}
               >
                 <span>{badge.emoji}</span>
                 {badge.label}

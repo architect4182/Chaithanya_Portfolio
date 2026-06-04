@@ -1,26 +1,29 @@
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import BrowserMockup from "./BrowserMockup";
 
 const projects = [
   {
     id: "policy-portal",
-    title: "Enterprise Insurance Platform",
+    title: "Policy & Claims Management Portal",
     client: "Client: The Hanover Insurance Group (USA)",
-    shortDesc: "Enterprise-grade insurance web application featuring robust policy creation, renewals, and claims processing workflows.",
+    domain: "Domain: Property & Casualty Insurance",
+    role: "Role: Information Technology Analyst / Full Stack Developer",
+    shortDesc: "Developed and maintained enterprise insurance applications for The Hanover Insurance Group (USA), supporting policy management, claims processing, premium audits, billing operations, policy renewals, endorsements, and customer self-service workflows.",
     problem: "Legacy insurance systems suffered from high latency, rigid monolithic architectures, and manual claim processing bottlenecks causing slow turnaround times.",
     solution: "Architected a scalable microservices ecosystem, implementing automated workflows, robust RBAC security, and optimized data retrieval pipelines.",
-    techStackText: "Java 11, Spring Boot, Angular, TypeScript, PostgreSQL, REST APIs",
+    techStackText: "Java 11 • Spring Boot • Angular • TypeScript • Oracle • PostgreSQL",
     outcome: "Reduced database retrieval times by 20%, improved frontend efficiency by 25% via reusable components, and successfully resolved 40+ critical production defects.",
     metrics: [
+      "💼 4+ Years Enterprise Experience",
       "↑ 25% Performance Improvement",
       "⚡ 30% Faster Page Loads",
-      "✓ 40+ Critical Defects Resolved"
+      "✓ 40+ Production Issues Resolved"
     ],
-    tech: ["Java 11", "Spring Boot", "Angular"],
-    image: "/project-job-dashboard.png",
-    url: "internal.hanover.com/portal",
+    tech: ["Java 11", "Spring Boot", "Angular", "TypeScript", "Oracle", "PostgreSQL"],
+    image: "/hanover-screenshot.png",
+    url: "https://www.hanover.com/",
     accentGradient: "from-blue-500/15 to-cyan-500/15",
     glow: "hover:shadow-blue-500/20",
     techColor: "bg-blue-500/10 text-blue-400",
@@ -30,7 +33,7 @@ const projects = [
 export default function Projects() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  
+
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const toggleExpand = (id: string) => {
@@ -57,15 +60,15 @@ export default function Projects() {
       <div className="grid gap-7 items-start max-w-4xl mx-auto">
         {projects.map((project, i) => {
           const isExpanded = expandedId === project.id;
-          
+
           return (
             <motion.div
               layout
               key={project.id}
               initial={{ opacity: 0, y: 36 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ 
-                opacity: { duration: 0.55, delay: i * 0.1 }, 
+              transition={{
+                opacity: { duration: 0.55, delay: i * 0.1 },
                 y: { duration: 0.55, delay: i * 0.1 },
                 layout: { duration: 0.4, type: "spring", bounce: 0.2 }
               }}
@@ -91,7 +94,7 @@ export default function Projects() {
               </motion.div>
 
               {/* ── Card body ── */}
-              <motion.div layout="position" className="flex flex-col flex-1 p-6 pt-5">
+              <motion.div layout="position" className="flex flex-col flex-1 p-6 pt-3">
                 <div className="flex items-start justify-between gap-3 mb-2">
                   <div>
                     <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
@@ -99,6 +102,12 @@ export default function Projects() {
                     </h3>
                     {project.client && (
                       <p className="text-sm font-medium text-cyan-400 mt-1">{project.client}</p>
+                    )}
+                    {(project as any).domain && (
+                      <p className="text-sm font-medium text-purple-400 mt-0.5">{(project as any).domain}</p>
+                    )}
+                    {(project as any).role && (
+                      <p className="text-sm font-medium text-emerald-400/70 mt-0.5">{(project as any).role}</p>
                     )}
                   </div>
                   <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0">
@@ -146,7 +155,7 @@ export default function Projects() {
                       <p className="text-gray-400 text-sm md:text-base mb-6 line-clamp-2">
                         {project.shortDesc}
                       </p>
-                      
+
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.tech.map((t) => (
                           <span
@@ -170,7 +179,7 @@ export default function Projects() {
                 </AnimatePresence>
 
                 <div className="mt-auto pt-2 border-t border-white/5">
-                  <button 
+                  <button
                     onClick={() => toggleExpand(project.id)}
                     className="flex items-center justify-center w-full gap-2 py-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors"
                   >
