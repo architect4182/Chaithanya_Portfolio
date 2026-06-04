@@ -6,6 +6,7 @@ import Experience from "./components/Experience"; // Experience section
 import GithubActivity from "./components/GithubActivity";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
+import GithubProjects from "./components/GithubProjects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -43,6 +44,7 @@ export default function App() {
         <GithubActivity />
         <Skills />
         <Projects />
+        <GithubProjects />
         <Contact />
         <Footer />
       </main>
