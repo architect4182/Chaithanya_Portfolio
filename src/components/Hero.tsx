@@ -145,74 +145,77 @@ export default function Hero() {
           {/* ══════════════ RIGHT — Profile photo ══════════════ */}
           <motion.div
             {...fadeLeft(0.3)}
-            className="relative flex justify-center order-1 lg:order-2"
+            className="relative flex justify-center order-1 lg:order-2 w-full"
           >
-            {/* Animated gradient glow behind image */}
-            <motion.div
-              animate={{ scale: [1, 1.08, 1], rotate: [0, 3, -3, 0] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-[-12%] rounded-3xl bg-gradient-to-br from-cyan-500/30 via-blue-500/20 to-purple-500/30 blur-3xl"
-              aria-hidden="true"
-            />
+            {/* Wrapper for the card so absolute elements are scoped to the card size */}
+            <div className="relative w-full max-w-sm lg:max-w-[420px] mx-auto">
+              {/* Animated gradient glow behind image */}
+              <motion.div
+                animate={{ scale: [1, 1.08, 1], rotate: [0, 3, -3, 0] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-[-12%] rounded-3xl bg-gradient-to-br from-cyan-500/30 via-blue-500/20 to-purple-500/30 blur-3xl"
+                aria-hidden="true"
+              />
 
-            {/* Secondary shimmer ring */}
-            <motion.div
-              animate={{ opacity: [0.4, 0.7, 0.4] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-[-4%] rounded-3xl border border-cyan-400/20"
-              aria-hidden="true"
-            />
+              {/* Secondary shimmer ring */}
+              <motion.div
+                animate={{ opacity: [0.4, 0.7, 0.4] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-[-4%] rounded-3xl border border-cyan-400/20"
+                aria-hidden="true"
+              />
 
-            {/* Glass card */}
-            <motion.div
-              whileHover={{ scale: 1.025, y: -4 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="relative w-full max-w-sm lg:max-w-none backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-3 shadow-2xl shadow-black/40 cursor-default"
-            >
-              {/* Inner gradient overlay on the image frame */}
-              <div className="relative rounded-2xl overflow-hidden">
-                <img
-                  src="/profile.jpg"
-                  alt="Chaithanya Pedhagali — Full Stack Java Developer"
-                  className="w-full object-cover object-top rounded-2xl"
-                  style={{ maxHeight: "480px" }}
-                  loading="eager"
-                  decoding="async"
-                />
+              {/* Glass card */}
+              <motion.div
+                whileHover={{ scale: 1.025, y: -4 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="relative w-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-3 shadow-2xl shadow-black/40 cursor-default"
+              >
+                {/* Inner gradient overlay on the image frame */}
+                <div className="relative rounded-2xl overflow-hidden">
+                  <img
+                    src="/profile.jpg"
+                    alt="Chaithanya Pedhagali — Full Stack Java Developer"
+                    className="w-full object-cover object-top rounded-2xl"
+                    style={{ maxHeight: "480px" }}
+                    loading="eager"
+                    decoding="async"
+                  />
 
-                {/* Subtle bottom fade so image blends into card */}
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/50 to-transparent" />
+                  {/* Subtle bottom fade so image blends into card */}
+                  <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/50 to-transparent" />
 
-                {/* Name chip at bottom of image */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(0,0,0,0.5)] backdrop-blur-md border border-[rgba(255,255,255,0.1)] text-sm text-[#ffffff] font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                    Available for opportunities
+                  {/* Name chip at bottom of image */}
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(0,0,0,0.5)] backdrop-blur-md border border-[rgba(255,255,255,0.1)] text-sm text-[#ffffff] font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                      Available for opportunities
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Card footer */}
-              <div className="px-3 py-3 flex items-center justify-between">
-                <span className="text-xs text-gray-500">IT Analyst / Full Stack Dev</span>
-                <span className="text-xs text-cyan-400 font-medium">4+ Yrs Exp ✦</span>
-              </div>
-            </motion.div>
-
-            {/* ── Floating tech badges ── */}
-            {floatingBadges.map((badge) => (
-              <motion.div
-                key={badge.label}
-                initial={{ opacity: 0, scale: 0.6 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: badge.delay, ease: "easeOut" }}
-                whileHover={{ scale: 1.1, y: -2 }}
-                className={`absolute ${badge.pos} hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl bg-[rgba(255,255,255,0.1)] border border-[rgba(255,255,255,0.2)] text-xs font-semibold text-[#ffffff] shadow-lg z-10`}
-              >
-                <span>{badge.emoji}</span>
-                {badge.label}
+                {/* Card footer */}
+                <div className="px-3 py-3 flex items-center justify-between">
+                  <span className="text-xs text-gray-500">IT Analyst / Full Stack Dev</span>
+                  <span className="text-xs text-cyan-400 font-medium">4+ Yrs Exp ✦</span>
+                </div>
               </motion.div>
-            ))}
+
+              {/* ── Floating tech badges ── */}
+              {floatingBadges.map((badge) => (
+                <motion.div
+                  key={badge.label}
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: badge.delay, ease: "easeOut" }}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className={`absolute ${badge.pos} hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl bg-[rgba(255,255,255,0.1)] border border-[rgba(255,255,255,0.2)] text-xs font-semibold text-[#ffffff] shadow-lg z-10`}
+                >
+                  <span>{badge.emoji}</span>
+                  {badge.label}
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
         </div>
