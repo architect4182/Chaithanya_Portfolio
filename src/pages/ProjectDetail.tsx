@@ -36,7 +36,7 @@ export default function ProjectDetail() {
     >
       {/* Navigation Bar for Case Study */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-xl border-b border-white/10 px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+        <Link to="/#projects" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
           <ArrowLeft size={20} />
           <span className="font-medium tracking-wide">Back to Projects</span>
         </Link>
@@ -169,8 +169,8 @@ export default function ProjectDetail() {
       <section className="max-w-4xl mx-auto px-6 py-32 text-center">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-10">Ready to explore?</h2>
         <div className="flex justify-center gap-6">
-          <Link to="/" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 text-white font-semibold hover:bg-white/20 border border-white/10 transition-colors">
-            <ArrowLeft size={18} /> Back to Home
+          <Link to="/#projects" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 text-white font-semibold hover:bg-white/20 border border-white/10 transition-colors">
+            <ArrowLeft size={18} /> Back to Projects
           </Link>
           {project.liveUrl && project.liveUrl !== "#" && (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors">
