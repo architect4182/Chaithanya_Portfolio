@@ -116,3 +116,34 @@ html.light .spotlight-effect { display: none !important; }
     animation: none;
   }
 }
+
+/* ── Premium Theme Transition (View Transitions API) ── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+  animation: circle-reveal 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes circle-reveal {
+  0% {
+    clip-path: circle(0px at var(--click-x, 50%) var(--click-y, 50%));
+  }
+  100% {
+    clip-path: circle(150vmax at var(--click-x, 50%) var(--click-y, 50%));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
