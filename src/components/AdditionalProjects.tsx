@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight, Code2 } from "lucide-react";
+import { ArrowUpRight, Code2, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const additionalProjects = [
   {
@@ -101,27 +102,30 @@ export default function AdditionalProjects() {
                 </div>
 
                 <div className="flex items-center justify-between mt-auto pt-5 border-t border-white/5">
-                  {project.github && project.github !== "#" ? (
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm font-semibold text-gray-400 hover:text-white transition-colors">
-                      <Code2 size={16} />
-                      Code
-                    </a>
-                  ) : (
-                    <span className="flex items-center gap-1.5 text-sm font-semibold text-gray-600 cursor-not-allowed">
-                      <Code2 size={16} /> Code
-                    </span>
-                  )}
-                  
-                  {project.url && project.url !== "#" ? (
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm font-semibold text-white hover:text-white transition-colors group-hover:translate-x-0.5 group-hover:-translate-y-0.5 duration-300">
-                      Live Demo
-                      <ArrowUpRight size={16} />
-                    </a>
-                  ) : (
-                    <span className="flex items-center gap-1.5 text-sm font-semibold text-gray-600 cursor-not-allowed">
+                  {/* View Case Study Button */}
+                  {project.id === "portfolio" ? (
+                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm font-semibold text-white hover:text-gray-300 transition-colors">
                       Live Demo <ArrowUpRight size={16} />
-                    </span>
+                    </a>
+                  ) : (
+                    <Link to={`/projects/${project.id}`} className="flex items-center gap-1.5 text-sm font-semibold text-white hover:text-gray-300 transition-colors group-hover:translate-x-0.5 duration-300">
+                      View Case Study <ArrowRight size={16} />
+                    </Link>
                   )}
+
+                  {/* Icon Links */}
+                  <div className="flex items-center gap-3">
+                    {project.github && project.github !== "#" && (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" title="GitHub">
+                        <Code2 size={18} />
+                      </a>
+                    )}
+                    {project.id !== "portfolio" && project.url && project.url !== "#" && (
+                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" title="Live Demo">
+                        <ArrowUpRight size={18} />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

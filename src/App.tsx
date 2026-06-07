@@ -1,18 +1,15 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import RecruiterHighlights from "./components/RecruiterHighlights";
-import About from "./components/About";
-import Experience from "./components/Experience"; // Experience section
-import Skills from "./components/Skills";
-import FloatingDock from "./components/FloatingDock";
-import Projects from "./components/Projects";
-import AdditionalProjects from "./components/AdditionalProjects";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import Home from "./pages/Home";
+import ProjectDetail from "./pages/ProjectDetail";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
+  const location = useLocation();
+
   return (
     <>
+      <ScrollToTop />
       {/* Floating gradient background */}
       <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
         {/* Top-left cyan orb */}
@@ -35,19 +32,12 @@ export default function App() {
         />
       </div>
 
-      <main className="text-white min-h-screen">
-        <Navbar />
-        <Hero />
-        <RecruiterHighlights />
-        <About />
-        <Experience />
-        <Skills />
-        <Projects />
-        <AdditionalProjects />
-        <Contact />
-        <FloatingDock />
-        <Footer />
-      </main>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
+        </Routes>
+      </AnimatePresence>
     </>
   );
 }
