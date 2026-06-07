@@ -3,10 +3,10 @@ import Hero from "./components/Hero";
 import RecruiterHighlights from "./components/RecruiterHighlights";
 import About from "./components/About";
 import Experience from "./components/Experience"; // Experience section
-import GithubActivity from "./components/GithubActivity";
 import Skills from "./components/Skills";
+import FloatingDock from "./components/FloatingDock";
 import Projects from "./components/Projects";
-import GithubProjects from "./components/GithubProjects";
+import AdditionalProjects from "./components/AdditionalProjects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -41,11 +41,11 @@ export default function App() {
         <RecruiterHighlights />
         <About />
         <Experience />
-        <GithubActivity />
         <Skills />
         <Projects />
-        <GithubProjects />
+        <AdditionalProjects />
         <Contact />
+        <FloatingDock />
         <Footer />
       </main>
     </>

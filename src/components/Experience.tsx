@@ -50,7 +50,7 @@ export default function Experience() { // Main Experience Component
           Experience
         </p>
         <h2 className="text-4xl md:text-5xl font-bold mb-14">
-          Where I've worked
+          Professional Experience
         </h2>
 
         <div className="space-y-12">

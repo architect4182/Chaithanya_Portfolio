@@ -55,8 +55,8 @@ export default function Contact() {
         <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">
           Contact
         </p>
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          Let's Connect
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+          Interested in working together?
         </h2>
         <p className="text-gray-400 max-w-xl leading-relaxed mb-10">
           I'm actively looking for full-time Software Engineering and Business Analyst roles.
