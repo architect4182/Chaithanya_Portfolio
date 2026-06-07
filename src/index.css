@@ -99,5 +99,20 @@ html.light .border-cyan-400\/20 { border-color: rgba(6, 182, 212, 0.12) !importa
 html.light .spotlight-effect { display: none !important; }
 .light .spotlight-effect { display: none !important; }
 
+/* Premium Drifting Animation for Orbs */
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(3vw, -5vh) scale(1.05); }
+  66% { transform: translate(-2vw, 3vh) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
 
+.animate-drift {
+  animation: drift 20s infinite ease-in-out;
+}
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift {
+    animation: none;
+  }
+}

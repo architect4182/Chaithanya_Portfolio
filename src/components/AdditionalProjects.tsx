@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight, Code2, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -42,11 +42,12 @@ const additionalProjects = [
 export default function AdditionalProjects() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section id="additional-projects" className="max-w-6xl mx-auto px-6 py-24" ref={ref}>
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.65 }}
         className="mb-14"
@@ -63,7 +64,7 @@ export default function AdditionalProjects() {
         {additionalProjects.map((project, i) => (
           <motion.div
             key={project.id}
-            initial={{ opacity: 0, y: 30 }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: i * 0.1 }}
             className={`relative p-[1px] rounded-[24px] bg-surface transition-all duration-500 group shadow-lg hover:-translate-y-2 ${project.colorHover}`}

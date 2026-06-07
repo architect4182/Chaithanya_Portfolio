@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 
 const featuredTech = [
@@ -11,11 +11,12 @@ const doubledTech = [...featuredTech, ...featuredTech, ...featuredTech, ...featu
 export default function Skills() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section id="skills" className="w-full py-32 overflow-hidden" ref={ref}>
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7 }}
         className="max-w-7xl mx-auto px-6 mb-20 text-center"
@@ -35,7 +36,7 @@ export default function Skills() {
 
         <motion.div
           className="flex whitespace-nowrap gap-6 md:gap-10 pr-6 md:pr-10"
-          animate={{ x: ["0%", "-50%"] }}
+          animate={shouldReduceMotion ? {} : { x: ["0%", "-50%"] }}
           transition={{
             repeat: Infinity,
             ease: "linear",

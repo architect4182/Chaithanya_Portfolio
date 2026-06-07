@@ -1,4 +1,4 @@
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion, useInView, useMotionValue, useTransform, animate, useReducedMotion } from "framer-motion";
 import { useRef, useEffect } from "react";
 import { Clock, Zap, Timer, CheckCircle, ShieldAlert, Code2 } from "lucide-react";
 
@@ -16,6 +16,8 @@ function AnimatedCounter({ value, suffix, label, icon, delay = 0 }: CounterProps
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
 
+  const shouldReduceMotion = useReducedMotion();
+
   useEffect(() => {
     if (inView) {
       const timeout = setTimeout(() => {
@@ -28,7 +30,7 @@ function AnimatedCounter({ value, suffix, label, icon, delay = 0 }: CounterProps
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay }}
       className="flex flex-col items-center justify-center p-6 text-center backdrop-blur-xl bg-surface border border-subtle rounded-3xl hover:border-subtle-hover transition-all duration-300"
@@ -61,14 +63,23 @@ export default function RecruiterHighlights() {
     { value: 25, suffix: "%", label: "UI Development Time Reduced", icon: <Code2 size={24} className="text-pink-400" />, delay: 0.5 },
   ];
 
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <section id="highlights" className="w-full relative z-20 -mt-24 mb-10 px-6">
+    <section id="highlights" className="w-full relative z-20 -mt-24 mb-10 px-6" ref={ref}>
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8">
+        <motion.div 
+          initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8"
+        >
           <p className="text-content-secondary font-medium tracking-wide max-w-2xl mx-auto">
             4 years of building enterprise applications used by insurance professionals across the United States.
           </p>
-        </div>
+        </motion.div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {metrics.map((metric, idx) => (
             <AnimatedCounter

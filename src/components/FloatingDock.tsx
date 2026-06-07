@@ -1,4 +1,4 @@
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import { FileText, Mail } from "lucide-react";
 
@@ -17,6 +17,7 @@ const LinkedinIcon = () => (
 export default function FloatingDock() {
   const { scrollY } = useScroll();
   const [visible, setVisible] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 300) {
@@ -37,26 +38,28 @@ export default function FloatingDock() {
     <AnimatePresence>
       {visible && (
         <motion.div
-          initial={{ y: 100, opacity: 0, x: "-50%" }}
-          animate={{ y: 0, opacity: 1, x: "-50%" }}
-          exit={{ y: 100, opacity: 0, x: "-50%" }}
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+          initial={shouldReduceMotion ? { opacity: 0 } : { y: 100, opacity: 0, x: "-50%" }}
+          animate={shouldReduceMotion ? { opacity: 1 } : { y: 0, opacity: 1, x: "-50%" }}
+          exit={shouldReduceMotion ? { opacity: 0 } : { y: 100, opacity: 0, x: "-50%" }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
           className="fixed bottom-8 left-1/2 z-50 hidden md:flex items-center gap-3 px-4 py-3 rounded-full bg-surface-elevated backdrop-blur-xl border border-subtle shadow-2xl shadow-black/20"
         >
           {links.map((link) => (
-            <a
+            <motion.a
               key={link.name}
               href={link.href}
               target={link.name === "Email" ? "_self" : "_blank"}
               rel="noopener noreferrer"
-              className="relative group p-3 rounded-full bg-surface hover:bg-surface-hover text-content-secondary hover:text-content transition-all duration-300 hover:-translate-y-1"
+              whileHover={shouldReduceMotion ? {} : { scale: 1.15, y: -4 }}
+              whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+              className="relative group p-3 rounded-full bg-surface hover:bg-surface-hover text-content-secondary hover:text-content transition-colors duration-300"
             >
               {link.icon}
               {/* Tooltip */}
               <span className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-surface-elevated text-content text-xs font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap border border-subtle shadow-xl">
                 {link.name}
               </span>
-            </a>
+            </motion.a>
           ))}
         </motion.div>
       )}

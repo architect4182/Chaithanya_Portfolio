@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { Mail, Send } from "lucide-react";
 
@@ -43,11 +42,12 @@ const socials = [
 export default function Contact() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section id="contact" className="max-w-6xl mx-auto px-6 py-24" ref={ref}>
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7 }}
         className="backdrop-blur-xl bg-surface border border-subtle rounded-3xl p-10 md:p-14"
@@ -71,7 +71,7 @@ export default function Contact() {
               href={social.href}
               target="_blank"
               rel="noreferrer"
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.15 * i + 0.3 }}
               className={`flex items-center gap-4 p-5 rounded-2xl bg-surface border border-subtle transition-all duration-200 group ${social.color}`}

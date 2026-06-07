@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, ArrowUpRight, Code2 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -9,11 +9,12 @@ const featuredIds = ["travel-os", "moments-os"];
 export default function Projects() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section id="projects" className="max-w-7xl mx-auto px-6 py-32" ref={ref}>
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.65 }}
         className="mb-32 text-center"
@@ -32,18 +33,28 @@ export default function Projects() {
           return (
             <motion.div
               key={id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial="hidden"
+              whileInView="visible"
+              whileHover="hover"
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="group flex flex-col gap-8 rounded-[40px] bg-surface border border-subtle p-4 md:p-8 hover:bg-surface-hover transition-colors duration-500"
+              variants={{
+                hidden: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: index * 0.2 } },
+                hover: {}
+              }}
+              className="flex flex-col gap-8 rounded-[40px] bg-surface border border-subtle p-4 md:p-8 hover:bg-surface-hover transition-colors duration-500"
             >
               {/* Large immersive screenshot */}
               <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[32px] overflow-hidden bg-background border border-subtle">
-                <img
+                <motion.img
                   src={project.heroImage}
                   alt={project.name}
-                  className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
+                  variants={{
+                    hidden: shouldReduceMotion ? {} : { scale: 0.98 },
+                    visible: shouldReduceMotion ? {} : { scale: 1, transition: { duration: 1, ease: "easeOut" } },
+                    hover: shouldReduceMotion ? {} : { scale: 1.02, transition: { duration: 0.7, ease: "easeOut" } }
+                  }}
+                  className="w-full h-full object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
                 

@@ -1,18 +1,18 @@
-import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
+import { motion, useMotionValue, useSpring, useMotionTemplate, useReducedMotion } from "framer-motion";
 import { ArrowRight, Download, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import type { MouseEvent } from "react";
 
 /* ── Animation helpers ─────────────────────────────────────── */
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 28 },
-  animate: { opacity: 1, y: 0 },
+const fadeUp = (delay = 0, reduceMotion = false) => ({
+  initial: reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 },
+  animate: reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 },
   transition: { duration: 0.65, delay, ease: "easeOut" as const },
 });
 
-const fadeLeft = (delay = 0) => ({
-  initial: { opacity: 0, x: 40 },
-  animate: { opacity: 1, x: 0 },
+const fadeLeft = (delay = 0, reduceMotion = false) => ({
+  initial: reduceMotion ? { opacity: 0 } : { opacity: 0, x: 40 },
+  animate: reduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 },
   transition: { duration: 0.7, delay, ease: "easeOut" as const },
 });
 
@@ -31,6 +31,7 @@ export default function Hero() {
   const [isHovered, setIsHovered] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const shouldReduceMotion = useReducedMotion();
 
   // Premium smooth spring physics for the spotlight
   const springX = useSpring(mouseX, { stiffness: 40, damping: 15 });
@@ -69,7 +70,7 @@ export default function Hero() {
           <div className="flex flex-col order-2 lg:order-1">
 
             {/* Availability badge */}
-            <motion.div {...fadeUp(0.05)} className="mb-7">
+            <motion.div {...fadeUp(0.05, shouldReduceMotion)} className="mb-7">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-medium">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
@@ -81,24 +82,44 @@ export default function Hero() {
 
             {/* Name */}
             <motion.h1
-              {...fadeUp(0.15)}
               className="text-5xl md:text-7xl font-black tracking-tight leading-[1.05] mb-5"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: { transition: { staggerChildren: 0.15, delayChildren: 0.15 } },
+              }}
             >
-              <span className="block text-content">Chaithanya</span>
-              <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent pb-3">
+              <motion.span 
+                variants={{
+                  hidden: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 },
+                  visible: shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.65, ease: "easeOut" }}
+                className="block text-content"
+              >
+                Chaithanya
+              </motion.span>
+              <motion.span 
+                variants={{
+                  hidden: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 },
+                  visible: shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.65, ease: "easeOut" }}
+                className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent pb-3"
+              >
                 Pedhagali
-              </span>
+              </motion.span>
             </motion.h1>
 
             {/* Role */}
-            <motion.p {...fadeUp(0.25)} className="text-lg text-content-secondary mb-3">
+            <motion.p {...fadeUp(0.35, shouldReduceMotion)} className="text-lg text-content-secondary mb-3">
               <span className="text-content font-semibold">Information Technology Analyst</span>
               {" · "}
               <span className="text-purple-400 font-medium">Full Stack Java Developer</span>
             </motion.p>
 
             {/* Description */}
-            <motion.p {...fadeUp(0.32)} className="text-content-secondary leading-relaxed max-w-lg mb-7">
+            <motion.p {...fadeUp(0.42, shouldReduceMotion)} className="text-content-secondary leading-relaxed max-w-lg mb-7">
               Building{" "}
               <span className="text-content font-medium">enterprise-grade applications</span> in the{" "}
               <span className="text-content font-medium">Insurance and Financial Services</span> domains with a focus on performance, scalability, and robust architecture.
@@ -106,7 +127,7 @@ export default function Hero() {
 
             {/* Tech stack chips */}
             <motion.div
-              {...fadeUp(0.4)}
+              {...fadeUp(0.5, shouldReduceMotion)}
               className="flex flex-wrap gap-2 mb-9"
             >
               {techStack.map((t) => (
@@ -120,7 +141,7 @@ export default function Hero() {
             </motion.div>
 
             {/* CTA buttons */}
-            <motion.div {...fadeUp(0.5)} className="flex flex-wrap gap-4 mb-12">
+            <motion.div {...fadeUp(0.6, shouldReduceMotion)} className="flex flex-wrap gap-4 mb-12">
               <a
                 href="#projects"
                 className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-bold transition-all duration-200 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-400/40 hover:-translate-y-0.5"
@@ -144,7 +165,7 @@ export default function Hero() {
 
           {/* ══════════════ RIGHT — Profile photo ══════════════ */}
           <motion.div
-            {...fadeLeft(0.3)}
+            {...fadeLeft(0.4, shouldReduceMotion)}
             className="relative flex justify-center order-1 lg:order-2 w-full"
           >
             {/* Wrapper for the card so absolute elements are scoped to the card size */}
@@ -167,7 +188,7 @@ export default function Hero() {
 
               {/* Glass card */}
               <motion.div
-                whileHover={{ scale: 1.025, y: -4 }}
+                whileHover={shouldReduceMotion ? {} : { scale: 1.025, y: -4 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
                 className="relative w-full backdrop-blur-xl bg-surface border border-subtle rounded-3xl p-3 shadow-2xl shadow-black/20 cursor-default"
               >
@@ -205,10 +226,10 @@ export default function Hero() {
               {floatingBadges.map((badge) => (
                 <motion.div
                   key={badge.label}
-                  initial={{ opacity: 0, scale: 0.6 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.6 }}
+                  animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: badge.delay, ease: "easeOut" }}
-                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.1, y: -2 }}
                   className={`absolute ${badge.pos} hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl bg-surface-elevated border border-subtle text-xs font-semibold text-content shadow-lg z-10`}
                 >
                   <span>{badge.emoji}</span>
