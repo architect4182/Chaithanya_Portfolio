@@ -11,7 +11,7 @@ export default function App() {
     <>
       <ScrollToTop />
       {/* Floating gradient background */}
-      <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
+      <div className="fixed inset-0 -z-10 overflow-hidden bg-background">
         {/* Top-left cyan orb */}
         <div className="absolute top-0 left-0 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl animate-pulse" />
 

@@ -38,14 +38,14 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ${
           scrolled
-            ? "backdrop-blur-md bg-black/80 border-b border-white/10 shadow-lg shadow-black/20"
+            ? "backdrop-blur-md bg-surface-elevated border-b border-subtle shadow-lg shadow-black/20"
             : "bg-transparent"
         }`}
       >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <a href="#" className="font-bold text-xl tracking-tight">
-          <span className="text-white">Chaithanya</span>
+          <span className="text-content">Chaithanya</span>
           <span className="text-cyan-400">.</span>
         </a>
 
@@ -55,7 +55,7 @@ export default function Navbar() {
             <a
               key={link}
               href={link === "Open Source" ? "#github" : `#${link.toLowerCase()}`}
-              className="text-sm text-gray-400 hover:text-white transition-colors duration-200 relative group"
+              className="text-sm text-content-secondary hover:text-content transition-colors duration-200 relative group"
             >
               {link}
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300" />
@@ -65,7 +65,7 @@ export default function Navbar() {
           {/* Theme toggle */}
           <button
             onClick={() => setDark(!dark)}
-            className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors border border-white/10"
+            className="p-2 rounded-full bg-surface hover:bg-surface-hover transition-colors border border-subtle"
             aria-label="Toggle theme"
           >
             {dark
@@ -84,7 +84,7 @@ export default function Navbar() {
 
         {/* Mobile menu button */}
         <button
-          className="lg:hidden p-2 rounded-lg bg-white/10"
+          className="lg:hidden p-2 rounded-lg bg-surface"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -94,13 +94,13 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden backdrop-blur-2xl bg-black/80 border-b border-white/10 px-6 pb-6">
+        <div className="lg:hidden backdrop-blur-2xl bg-surface-elevated border-b border-subtle px-6 pb-6">
           <div className="flex flex-col gap-4 pt-2">
             {navLinks.map((link) => (
               <a
                 key={link}
                 href={link === "Open Source" ? "#github" : `#${link.toLowerCase()}`}
-                className="text-gray-400 hover:text-white transition-colors py-1"
+                className="text-content-secondary hover:text-content transition-colors py-1"
                 onClick={() => setMobileOpen(false)}
               >
                 {link}
@@ -108,7 +108,7 @@ export default function Navbar() {
             ))}
             <button
               onClick={() => setDark(!dark)}
-              className="flex items-center gap-2 text-gray-400 py-1"
+              className="flex items-center gap-2 text-content-secondary py-1"
             >
               {dark ? <Sun size={16} className="text-yellow-300" /> : <Moon size={16} className="text-slate-700" />}
               {dark ? "Switch to Light" : "Switch to Dark"}

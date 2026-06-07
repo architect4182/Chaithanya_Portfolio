@@ -84,24 +84,24 @@ export default function Hero() {
               {...fadeUp(0.15)}
               className="text-5xl md:text-7xl font-black tracking-tight leading-[1.05] mb-5"
             >
-              <span className="block text-white">Chaithanya</span>
+              <span className="block text-content">Chaithanya</span>
               <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent pb-3">
                 Pedhagali
               </span>
             </motion.h1>
 
             {/* Role */}
-            <motion.p {...fadeUp(0.25)} className="text-lg text-gray-400 mb-3">
-              <span className="text-white font-semibold">Information Technology Analyst</span>
+            <motion.p {...fadeUp(0.25)} className="text-lg text-content-secondary mb-3">
+              <span className="text-content font-semibold">Information Technology Analyst</span>
               {" · "}
               <span className="text-purple-400 font-medium">Full Stack Java Developer</span>
             </motion.p>
 
             {/* Description */}
-            <motion.p {...fadeUp(0.32)} className="text-gray-400 leading-relaxed max-w-lg mb-7">
+            <motion.p {...fadeUp(0.32)} className="text-content-secondary leading-relaxed max-w-lg mb-7">
               Building{" "}
-              <span className="text-white font-medium">enterprise-grade applications</span> in the{" "}
-              <span className="text-white font-medium">Insurance and Financial Services</span> domains with a focus on performance, scalability, and robust architecture.
+              <span className="text-content font-medium">enterprise-grade applications</span> in the{" "}
+              <span className="text-content font-medium">Insurance and Financial Services</span> domains with a focus on performance, scalability, and robust architecture.
             </motion.p>
 
             {/* Tech stack chips */}
@@ -112,7 +112,7 @@ export default function Hero() {
               {techStack.map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-gray-400"
+                  className="px-3 py-1 rounded-full text-xs font-medium bg-surface border border-subtle text-content-secondary"
                 >
                   {t}
                 </span>
@@ -132,7 +132,7 @@ export default function Hero() {
               <a
                 href="/Chaithanya_Pedhagali_Resume.pdf"
                 download
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 font-semibold transition-all duration-200 hover:-translate-y-0.5 text-white"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-surface hover:bg-surface-hover border border-subtle font-semibold transition-all duration-200 hover:-translate-y-0.5 text-content"
               >
                 <Download size={17} />
                 Resume
@@ -169,7 +169,7 @@ export default function Hero() {
               <motion.div
                 whileHover={{ scale: 1.025, y: -4 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="relative w-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-3 shadow-2xl shadow-black/40 cursor-default"
+                className="relative w-full backdrop-blur-xl bg-surface border border-subtle rounded-3xl p-3 shadow-2xl shadow-black/20 cursor-default"
               >
                 {/* Inner gradient overlay on the image frame */}
                 <div className="relative rounded-2xl overflow-hidden">
@@ -187,7 +187,7 @@ export default function Hero() {
 
                   {/* Name chip at bottom of image */}
                   <div className="absolute bottom-4 left-4 right-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(0,0,0,0.5)] backdrop-blur-md border border-[rgba(255,255,255,0.1)] text-sm text-[#ffffff] font-medium">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-elevated backdrop-blur-md border border-subtle text-sm text-content font-medium">
                       <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                       Available for opportunities
                     </div>
@@ -196,7 +196,7 @@ export default function Hero() {
 
                 {/* Card footer */}
                 <div className="px-3 py-3 flex items-center justify-between">
-                  <span className="text-xs text-gray-500">IT Analyst / Full Stack Dev</span>
+                  <span className="text-xs text-content-secondary">IT Analyst / Full Stack Dev</span>
                   <span className="text-xs text-cyan-400 font-medium">4+ Yrs Exp ✦</span>
                 </div>
               </motion.div>
@@ -209,7 +209,7 @@ export default function Hero() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: badge.delay, ease: "easeOut" }}
                   whileHover={{ scale: 1.1, y: -2 }}
-                  className={`absolute ${badge.pos} hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl bg-[rgba(255,255,255,0.1)] border border-[rgba(255,255,255,0.2)] text-xs font-semibold text-[#ffffff] shadow-lg z-10`}
+                  className={`absolute ${badge.pos} hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-xl bg-surface-elevated border border-subtle text-xs font-semibold text-content shadow-lg z-10`}
                 >
                   <span>{badge.emoji}</span>
                   {badge.label}
@@ -226,7 +226,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-600"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-content-secondary"
       >
         <ChevronDown size={15} className="animate-bounce" />
       </motion.div>

@@ -41,7 +41,7 @@ export default function FloatingDock() {
           animate={{ y: 0, opacity: 1, x: "-50%" }}
           exit={{ y: 100, opacity: 0, x: "-50%" }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="fixed bottom-8 left-1/2 z-50 hidden md:flex items-center gap-3 px-4 py-3 rounded-full bg-[#111111]/80 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/80"
+          className="fixed bottom-8 left-1/2 z-50 hidden md:flex items-center gap-3 px-4 py-3 rounded-full bg-surface-elevated backdrop-blur-xl border border-subtle shadow-2xl shadow-black/20"
         >
           {links.map((link) => (
             <a
@@ -49,11 +49,11 @@ export default function FloatingDock() {
               href={link.href}
               target={link.name === "Email" ? "_self" : "_blank"}
               rel="noopener noreferrer"
-              className="relative group p-3 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-all duration-300 hover:-translate-y-1"
+              className="relative group p-3 rounded-full bg-surface hover:bg-surface-hover text-content-secondary hover:text-content transition-all duration-300 hover:-translate-y-1"
             >
               {link.icon}
               {/* Tooltip */}
-              <span className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-[#222] text-gray-200 text-xs font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap border border-white/5 shadow-xl">
+              <span className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-surface-elevated text-content text-xs font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap border border-subtle shadow-xl">
                 {link.name}
               </span>
             </a>

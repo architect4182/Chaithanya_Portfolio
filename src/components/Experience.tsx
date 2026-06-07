@@ -64,7 +64,7 @@ export default function Experience() { // Main Experience Component
             >
               <div className="md:grid md:grid-cols-4 gap-8">
                 {/* Timeline Line & Dot (Mobile Only) */}
-                <div className="md:hidden absolute left-0 top-2 bottom-0 w-px bg-white/10">
+                <div className="md:hidden absolute left-0 top-2 bottom-0 w-px bg-surface-hover">
                   <div className="absolute top-0 -left-1.5 w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
                 </div>
 
@@ -74,7 +74,7 @@ export default function Experience() { // Main Experience Component
                     <Calendar size={16} />
                     <span>{job.duration}</span>
                   </div>
-                  <div className="flex items-center md:justify-end gap-2 text-gray-500 text-sm">
+                  <div className="flex items-center md:justify-end gap-2 text-content-secondary text-sm">
                     <MapPin size={14} />
                     <span>{job.location}</span>
                   </div>
@@ -83,25 +83,25 @@ export default function Experience() { // Main Experience Component
                 {/* Right Column: Details */}
                 <div className="md:col-span-3 relative">
                   {/* Timeline Line & Dot (Desktop) */}
-                  <div className="hidden md:block absolute -left-4 top-2 bottom-[-3rem] w-px bg-white/10">
+                  <div className="hidden md:block absolute -left-4 top-2 bottom-[-3rem] w-px bg-surface-hover">
                     <div className="absolute top-0 -left-[5px] w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
                   </div>
 
-                  <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 hover:border-white/20 transition-all duration-300">
-                    <h3 className="text-2xl font-bold text-white mb-2">{job.role}</h3>
+                  <div className="backdrop-blur-xl bg-surface border border-subtle rounded-3xl p-6 md:p-8 hover:border-subtle-hover transition-all duration-300">
+                    <h3 className="text-2xl font-bold text-content mb-2">{job.role}</h3>
                     <div className="flex flex-wrap items-center gap-2 mb-4">
                       <span className="text-lg font-semibold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
                         {job.company}
                       </span>
-                      <span className="text-gray-600 hidden sm:inline">•</span>
-                      <span className="text-gray-400 text-sm">Client: {job.client}</span>
+                      <span className="text-content-secondary hidden sm:inline">•</span>
+                      <span className="text-content-secondary text-sm">Client: {job.client}</span>
                     </div>
                     
                     <div className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20 mb-6">
                       Domain: {job.domain}
                     </div>
 
-                    <ul className="space-y-3 text-gray-400 text-sm md:text-base leading-relaxed mb-8">
+                    <ul className="space-y-3 text-content-secondary text-sm md:text-base leading-relaxed mb-8">
                       {job.achievements.map((item, i) => (
                         <li key={i} className="flex items-start gap-3">
                           <span className="text-cyan-500 mt-1.5 shrink-0">
@@ -115,7 +115,7 @@ export default function Experience() { // Main Experience Component
                     {/* ── Key Achievements Badges ── */}
                     {job.keyMetrics && (
                       <div className="mb-8">
-                        <h4 className="text-sm font-semibold text-white mb-3 uppercase tracking-wider flex items-center gap-2">
+                        <h4 className="text-sm font-semibold text-content mb-3 uppercase tracking-wider flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
                           Key Achievements
                         </h4>
@@ -135,7 +135,7 @@ export default function Experience() { // Main Experience Component
                     {/* ── Tech Stack Badges ── */}
                     {job.techStack && (
                       <div>
-                        <h4 className="text-sm font-semibold text-white mb-3 uppercase tracking-wider flex items-center gap-2">
+                        <h4 className="text-sm font-semibold text-content mb-3 uppercase tracking-wider flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
                           Tech Stack
                         </h4>

@@ -22,7 +22,7 @@ const socials = [
     label: "GitHub",
     handle: "@architect4182",
     href: "https://github.com/architect4182",
-    color: "hover:border-white/40 hover:text-white",
+    color: "hover:border-content/40 hover:text-content",
   },
   {
     icon: <LinkedinIcon />,
@@ -50,7 +50,7 @@ export default function Contact() {
         initial={{ opacity: 0, y: 40 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7 }}
-        className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-10 md:p-14"
+        className="backdrop-blur-xl bg-surface border border-subtle rounded-3xl p-10 md:p-14"
       >
         <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">
           Contact
@@ -58,7 +58,7 @@ export default function Contact() {
         <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
           Interested in working together?
         </h2>
-        <p className="text-gray-400 max-w-xl leading-relaxed mb-10">
+        <p className="text-content-secondary max-w-xl leading-relaxed mb-10">
           I'm actively looking for full-time Software Engineering and Business Analyst roles.
           If you'd like to collaborate or have an opportunity — reach out!
         </p>
@@ -74,14 +74,14 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.15 * i + 0.3 }}
-              className={`flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 transition-all duration-200 group ${social.color}`}
+              className={`flex items-center gap-4 p-5 rounded-2xl bg-surface border border-subtle transition-all duration-200 group ${social.color}`}
             >
-              <span className="text-gray-400 group-hover:text-inherit transition-colors">
+              <span className="text-content-secondary group-hover:text-inherit transition-colors">
                 {social.icon}
               </span>
               <div>
-                <div className="text-sm font-semibold text-white">{social.label}</div>
-                <div className="text-xs text-gray-500">{social.handle}</div>
+                <div className="text-sm font-semibold text-content">{social.label}</div>
+                <div className="text-xs text-content-secondary">{social.handle}</div>
               </div>
             </motion.a>
           ))}

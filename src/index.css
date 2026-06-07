@@ -1,6 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --color-background: var(--bg-primary);
+  --color-surface: var(--bg-surface);
+  --color-surface-hover: var(--bg-surface-hover);
+  --color-surface-elevated: var(--bg-surface-elevated);
+  --color-content: var(--text-primary);
+  --color-content-secondary: var(--text-secondary);
+  --color-content-inverse: var(--text-inverse);
+  --color-subtle: var(--border-subtle);
+  --color-subtle-hover: var(--border-hover);
+  --color-inverse: var(--bg-inverse);
+  --color-inverse-hover: var(--bg-inverse-hover);
+}
+
+:root {
+  /* Dark Mode Default */
+  --bg-primary: #0a0a0a;
+  --bg-surface: rgba(255, 255, 255, 0.05);
+  --bg-surface-hover: rgba(255, 255, 255, 0.1);
+  --bg-surface-elevated: rgba(0, 0, 0, 0.8);
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af; /* gray-400 */
+  --text-inverse: #000000;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(255, 255, 255, 0.2);
+  --bg-inverse: #ffffff;
+  --bg-inverse-hover: #e5e7eb;
+}
+
+html.light {
+  color-scheme: light;
+  
+  /* Light Mode Overrides */
+  --bg-primary: #f5f5f7;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: rgba(255, 255, 255, 0.8);
+  --bg-surface-elevated: rgba(255, 255, 255, 0.85);
+  --text-primary: #1d1d1f;
+  --text-secondary: #515154;
+  --text-inverse: #ffffff;
+  --border-subtle: rgba(0, 0, 0, 0.1);
+  --border-hover: rgba(0, 0, 0, 0.2);
+  --bg-inverse: #000000;
+  --bg-inverse-hover: #1f2937;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 76px;
@@ -12,6 +58,8 @@ body {
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 /* Custom scrollbar */
@@ -19,7 +67,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(6, 182, 212, 0.4);
@@ -29,102 +77,17 @@ body {
   background: rgba(6, 182, 212, 0.7);
 }
 
-/* ============================================================
-   LIGHT MODE — applied when <html> has the .light class
-   Overrides every dark utility used across the portfolio.
-   ============================================================ */
-
-html.light {
-  color-scheme: light;
+html.light::-webkit-scrollbar-track {
+  background: var(--bg-primary);
 }
-
-html.light body {
-  background-color: #f1f5f9;
-  color: #0f172a;
-}
-
-/* ── Background & surface overrides ── */
-html.light .bg-black {
-  background-color: #f1f5f9 !important;
-}
-
-html.light .bg-black\/60 {
-  background-color: rgba(241, 245, 249, 0.92) !important;
-}
-
-html.light .bg-black\/80 {
-  background-color: rgba(241, 245, 249, 0.97) !important;
-}
-
-/* Glass card fills */
-html.light .bg-white\/5  { background-color: rgba(15, 23, 42, 0.04) !important; }
-html.light .bg-white\/8  { background-color: rgba(15, 23, 42, 0.06) !important; }
-html.light .bg-white\/10 { background-color: rgba(15, 23, 42, 0.07) !important; }
-html.light .bg-white\/15 { background-color: rgba(15, 23, 42, 0.09) !important; }
-html.light .bg-white\/20 { background-color: rgba(15, 23, 42, 0.12) !important; }
-
-/* Hover glass states */
-html.light .hover\:bg-white\/8:hover  { background-color: rgba(15, 23, 42, 0.07) !important; }
-html.light .hover\:bg-white\/15:hover { background-color: rgba(15, 23, 42, 0.1) !important;  }
-html.light .hover\:bg-white\/20:hover { background-color: rgba(15, 23, 42, 0.13) !important; }
-
-/* ── Border overrides ── */
-html.light .border-white\/10 { border-color: rgba(15, 23, 42, 0.1)  !important; }
-html.light .border-white\/20 { border-color: rgba(15, 23, 42, 0.15) !important; }
-html.light .border-white\/40 { border-color: rgba(15, 23, 42, 0.3)  !important; }
-
-/* Hover border states */
-html.light .hover\:border-white\/20:hover { border-color: rgba(15, 23, 42, 0.18) !important; }
-html.light .hover\:border-white\/25:hover { border-color: rgba(15, 23, 42, 0.22) !important; }
-html.light .hover\:border-white\/40:hover { border-color: rgba(15, 23, 42, 0.32) !important; }
-
-/* Specific project card border colours stay colour-accented — no override needed */
-
-/* ── Text overrides ── */
-html.light .text-white               { color: #0f172a !important; }
-html.light .text-gray-200            { color: #334155 !important; }
-html.light .text-gray-300            { color: #475569 !important; }
-html.light .text-gray-400            { color: #475569 !important; }
-html.light .text-gray-500            { color: #64748b !important; }
-html.light .text-gray-600            { color: #64748b !important; }
-
-html.light .text-cyan-300            { color: #0891b2 !important; }
-html.light .text-cyan-400            { color: #0891b2 !important; }
-html.light .text-purple-300          { color: #7e22ce !important; }
-html.light .text-purple-400          { color: #7e22ce !important; }
-html.light .text-blue-400            { color: #2563eb !important; }
-html.light .text-emerald-400         { color: #059669 !important; }
-html.light .text-emerald-400\/70     { color: rgba(5, 150, 105, 0.8) !important; }
-html.light .text-cyan-50             { color: #0891b2 !important; }
-
-/* Gradient text overrides */
-html.light .from-white               { --tw-gradient-from: #0f172a !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important; }
-html.light .to-gray-400              { --tw-gradient-to: #475569 !important; }
-
-/* Hover text */
-html.light .hover\:text-white:hover  { color: #0f172a !important; }
-html.light .group-hover\:text-white:hover { color: #0f172a !important; }
-html.light .group-hover\:text-gray-300:hover { color: #475569 !important; }
-html.light .group-hover\:text-cyan-300:hover { color: #0891b2 !important; }
-
-/* ── Shadow overrides ── */
-html.light .shadow-black\/20 {
-  --tw-shadow-color: rgba(15, 23, 42, 0.12) !important;
+html.light::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.5);
 }
 
 /* ── Floating orbs — subtler on a light background ── */
 html.light .bg-cyan-500\/15   { background-color: rgba(6, 182, 212, 0.09)  !important; }
 html.light .bg-purple-500\/15 { background-color: rgba(168, 85, 247, 0.09) !important; }
 html.light .bg-blue-500\/10   { background-color: rgba(59, 130, 246, 0.06) !important; }
-
-/* ── Scrollbar in light mode ── */
-html.light::-webkit-scrollbar-track { background: #e2e8f0; }
-html.light::-webkit-scrollbar-thumb { background: rgba(6, 182, 212, 0.5); }
-
-/* ── Hero photo card (light mode) ── */
-html.light .border-white\/15 { border-color: rgba(15, 23, 42, 0.12) !important; }
-html.light .bg-black\/50     { background-color: rgba(241, 245, 249, 0.7) !important; }
-html.light .shadow-black\/40 { --tw-shadow-color: rgba(15, 23, 42, 0.18) !important; }
 
 /* Keep gradient glow visible in light mode */
 html.light .from-cyan-500\/30   { --tw-gradient-from: rgba(6, 182, 212, 0.12) !important; }
@@ -134,6 +97,7 @@ html.light .border-cyan-400\/20 { border-color: rgba(6, 182, 212, 0.12) !importa
 
 /* Hide interactive dark spotlight in light mode */
 html.light .spotlight-effect { display: none !important; }
+.light .spotlight-effect { display: none !important; }
 
 
 

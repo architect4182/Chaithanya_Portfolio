@@ -31,20 +31,20 @@ function AnimatedCounter({ value, suffix, label, icon, delay = 0 }: CounterProps
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay }}
-      className="flex flex-col items-center justify-center p-6 text-center backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl hover:border-white/20 transition-all duration-300"
+      className="flex flex-col items-center justify-center p-6 text-center backdrop-blur-xl bg-surface border border-subtle rounded-3xl hover:border-subtle-hover transition-all duration-300"
     >
-      <div className="mb-4 p-3 rounded-2xl bg-white/5 text-cyan-400">
+      <div className="mb-4 p-3 rounded-2xl bg-surface-elevated text-cyan-400">
         {icon}
       </div>
       <div className="flex items-baseline justify-center gap-1 mb-2">
-        <motion.span className="text-4xl md:text-5xl font-black text-white tracking-tight">
+        <motion.span className="text-4xl md:text-5xl font-black text-content tracking-tight">
           {rounded}
         </motion.span>
         <span className="text-2xl md:text-3xl font-bold text-cyan-400">
           {suffix}
         </span>
       </div>
-      <p className="text-sm font-medium text-gray-400 max-w-[140px] leading-snug">
+      <p className="text-sm font-medium text-content-secondary max-w-[140px] leading-snug">
         {label}
       </p>
     </motion.div>
@@ -65,7 +65,7 @@ export default function RecruiterHighlights() {
     <section id="highlights" className="w-full relative z-20 -mt-24 mb-10 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
-          <p className="text-gray-400 font-medium tracking-wide max-w-2xl mx-auto">
+          <p className="text-content-secondary font-medium tracking-wide max-w-2xl mx-auto">
             4 years of building enterprise applications used by insurance professionals across the United States.
           </p>
         </div>

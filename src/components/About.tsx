@@ -40,13 +40,13 @@ export default function About() {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div className="space-y-5 text-gray-400 leading-8">
+          <div className="space-y-5 text-content-secondary leading-8">
             <p>
-              Hello! I'm <span className="text-white font-semibold">Chaithanya Pedhagali</span> — a
+              Hello! I'm <span className="text-content font-semibold">Chaithanya Pedhagali</span> — a
               results-driven Full Stack Java Developer with 4 years of experience building enterprise-grade applications.
             </p>
             <p>
-              I bring deep hands-on expertise with <span className="text-white">Java · Spring Boot · Angular · PostgreSQL</span>,
+              I bring deep hands-on expertise with <span className="text-content">Java · Spring Boot · Angular · PostgreSQL</span>,
               and have successfully designed and delivered complex REST APIs and Microservices within Agile environments.
             </p>
             <p>
@@ -62,12 +62,12 @@ export default function About() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.15 * i }}
-                className="flex items-start gap-4 p-5 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-200"
+                className="flex items-start gap-4 p-5 rounded-2xl backdrop-blur-xl bg-surface border border-subtle hover:border-subtle-hover hover:bg-surface-hover transition-all duration-200"
               >
-                <div className="p-2.5 rounded-xl bg-white/10 shrink-0">{item.icon}</div>
+                <div className="p-2.5 rounded-xl bg-surface-elevated shrink-0">{item.icon}</div>
                 <div>
-                  <h3 className="font-semibold text-white mb-1">{item.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                  <h3 className="font-semibold text-content mb-1">{item.title}</h3>
+                  <p className="text-content-secondary text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
             ))}

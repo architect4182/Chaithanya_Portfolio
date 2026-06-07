@@ -21,7 +21,7 @@ export default function Projects() {
         <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-4">
           Case Studies
         </p>
-        <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
+        <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-content">
           Featured Work.
         </h2>
       </motion.div>
@@ -36,10 +36,10 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="group flex flex-col gap-8 rounded-[40px] bg-white/5 border border-white/10 p-4 md:p-8 hover:bg-white/10 transition-colors duration-500"
+              className="group flex flex-col gap-8 rounded-[40px] bg-surface border border-subtle p-4 md:p-8 hover:bg-surface-hover transition-colors duration-500"
             >
               {/* Large immersive screenshot */}
-              <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[32px] overflow-hidden bg-black border border-white/10">
+              <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[32px] overflow-hidden bg-background border border-subtle">
                 <img
                   src={project.heroImage}
                   alt={project.name}

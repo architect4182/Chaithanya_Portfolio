@@ -54,7 +54,7 @@ export default function AdditionalProjects() {
         <p className="text-emerald-400 text-sm font-medium tracking-widest uppercase mb-3">
           More Work
         </p>
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-content">
           Other Projects.
         </h2>
       </motion.div>
@@ -66,15 +66,15 @@ export default function AdditionalProjects() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className={`relative p-[1px] rounded-[24px] bg-white/5 transition-all duration-500 group shadow-lg hover:-translate-y-2 ${project.colorHover}`}
+            className={`relative p-[1px] rounded-[24px] bg-surface transition-all duration-500 group shadow-lg hover:-translate-y-2 ${project.colorHover}`}
           >
             {/* Animated Gradient Border Layer */}
             <div className={`absolute inset-0 rounded-[24px] bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${project.gradientHover}`} />
 
             {/* Main Card Content */}
-            <div className="relative flex flex-col h-full bg-[#0a0a0a] backdrop-blur-xl rounded-[23px] overflow-hidden z-10">
+            <div className="relative flex flex-col h-full bg-background backdrop-blur-xl rounded-[23px] overflow-hidden z-10">
               {/* Image Container taking 60-70% aspect */}
-              <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#111] border-b border-white/5">
+              <div className="relative w-full aspect-[4/3] overflow-hidden bg-surface border-b border-subtle">
                 <img 
                   src={project.image} 
                   alt={project.title} 
@@ -85,30 +85,30 @@ export default function AdditionalProjects() {
               {/* Content Box */}
               <div className="flex flex-col flex-1 p-6">
                 <div className="mb-5">
-                  <h3 className="text-xl font-bold text-white mb-1.5 tracking-tight group-hover:text-white transition-colors">
+                  <h3 className="text-xl font-bold text-content mb-1.5 tracking-tight group-hover:text-content transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-400 text-sm font-medium">
+                  <p className="text-content-secondary text-sm font-medium">
                     {project.tagline}
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tech.map((t) => (
-                    <span key={t} className="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-semibold tracking-wide text-gray-300">
+                    <span key={t} className="px-2.5 py-1 rounded-md bg-surface border border-subtle text-[11px] font-semibold tracking-wide text-content-secondary">
                       {t}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between mt-auto pt-5 border-t border-white/5">
+                <div className="flex items-center justify-between mt-auto pt-5 border-t border-subtle">
                   {/* View Case Study Button */}
                   {project.id === "portfolio" ? (
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm font-semibold text-white hover:text-gray-300 transition-colors">
+                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm font-semibold text-content hover:text-content-secondary transition-colors">
                       Live Demo <ArrowUpRight size={16} />
                     </a>
                   ) : (
-                    <Link to={`/projects/${project.id}`} className="flex items-center gap-1.5 text-sm font-semibold text-white hover:text-gray-300 transition-colors group-hover:translate-x-0.5 duration-300">
+                    <Link to={`/projects/${project.id}`} className="flex items-center gap-1.5 text-sm font-semibold text-content hover:text-content-secondary transition-colors group-hover:translate-x-0.5 duration-300">
                       View Case Study <ArrowRight size={16} />
                     </Link>
                   )}
@@ -116,12 +116,12 @@ export default function AdditionalProjects() {
                   {/* Icon Links */}
                   <div className="flex items-center gap-3">
                     {project.github && project.github !== "#" && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" title="GitHub">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-content-secondary hover:text-content transition-colors" title="GitHub">
                         <Code2 size={18} />
                       </a>
                     )}
                     {project.id !== "portfolio" && project.url && project.url !== "#" && (
-                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" title="Live Demo">
+                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-content-secondary hover:text-content transition-colors" title="Live Demo">
                         <ArrowUpRight size={18} />
                       </a>
                     )}
