@@ -89,7 +89,7 @@ export default function Hero() {
                 visible: { transition: { staggerChildren: 0.15, delayChildren: 0.15 } },
               }}
             >
-              <motion.span 
+              <motion.span
                 variants={{
                   hidden: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 },
                   visible: shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 },
@@ -99,7 +99,7 @@ export default function Hero() {
               >
                 Chaithanya
               </motion.span>
-              <motion.span 
+              <motion.span
                 variants={{
                   hidden: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 },
                   visible: shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 },

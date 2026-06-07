@@ -39,17 +39,19 @@ function DockItem({ item, mouseX, isLightMode, shouldReduceMotion }: any) {
 
   const innerContent = (
     <>
-      <span className="w-1/2 h-1/2 flex items-center justify-center pointer-events-none">
+      <span className="w-1/2 h-1/2 flex items-center justify-center pointer-events-none relative z-10">
         {typeof item.icon === "function" ? item.icon(isLightMode) : item.icon}
       </span>
       {/* Tooltip */}
       <span className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-surface-elevated text-content text-xs font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap border border-subtle shadow-xl z-50">
         {item.name}
       </span>
+      {/* Hover dot glow */}
+      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
     </>
   );
 
-  const className = "relative group flex items-center justify-center rounded-full bg-surface border border-transparent hover:bg-surface-hover hover:border-subtle hover:shadow-[0_0_15px_rgba(34,211,238,0.2)] transition-colors duration-300";
+  const className = "relative group flex items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors duration-300";
 
   if (item.onClick) {
     return (
@@ -135,7 +137,9 @@ export default function FloatingDock() {
   };
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 300) {
+    // Show dock only after scrolling past the hero section
+    const threshold = typeof window !== "undefined" ? window.innerHeight * 0.8 : 600;
+    if (latest > threshold) {
       setVisible(true);
     } else {
       setVisible(false);
@@ -159,7 +163,7 @@ export default function FloatingDock() {
               animate={{ opacity: 1, rotate: 0, scale: 1 }}
               exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
               transition={{ duration: 0.2 }}
-              className="absolute inset-0 flex items-center justify-center p-3"
+              className="absolute inset-0 flex items-center justify-center"
             >
               <Moon className="w-full h-full text-content" />
             </motion.div>
@@ -170,7 +174,7 @@ export default function FloatingDock() {
               animate={{ opacity: 1, rotate: 0, scale: 1 }}
               exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
               transition={{ duration: 0.2 }}
-              className="absolute inset-0 flex items-center justify-center p-3"
+              className="absolute inset-0 flex items-center justify-center"
             >
               <Sun className="w-full h-full text-content" />
             </motion.div>
@@ -191,7 +195,14 @@ export default function FloatingDock() {
           transition={{ type: "spring", stiffness: 200, damping: 20 }}
           onMouseMove={(e) => mouseX.set(e.pageX)}
           onMouseLeave={() => mouseX.set(Infinity)}
-          className="fixed bottom-6 left-1/2 z-50 flex items-end gap-2 px-3 py-2 rounded-full bg-surface-elevated/80 backdrop-blur-2xl border border-subtle shadow-2xl shadow-black/20"
+          style={{
+            background: isLightMode ? "rgba(0,0,0,0.03)" : "rgba(255,255,255,0.06)",
+            border: `1px solid ${isLightMode ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.12)"}`,
+            boxShadow: isLightMode 
+              ? "0 8px 32px rgba(0,0,0,0.1), 0 0 30px rgba(0,200,255,0.15)"
+              : "0 8px 32px rgba(0,0,0,0.35), 0 0 30px rgba(0,200,255,0.08)"
+          }}
+          className="fixed bottom-6 left-1/2 z-50 flex items-end gap-3 px-4 py-3 rounded-[32px] backdrop-blur-xl"
         >
           {items.map((item) => (
             <DockItem 

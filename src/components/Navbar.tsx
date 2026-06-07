@@ -54,22 +54,24 @@ export default function Navbar() {
     });
   };
 
+  const [hidden, setHidden] = useState(false);
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      const threshold = typeof window !== "undefined" ? window.innerHeight * 0.5 : 400;
+      setHidden(window.scrollY > threshold);
+    };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <>
-      {/* Spacer to prevent content from hiding behind fixed navbar */}
       <div className="h-[76px] w-full" aria-hidden="true" />
       
       <nav
-        className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ${
-          scrolled
-            ? "backdrop-blur-md bg-surface-elevated border-b border-subtle shadow-lg shadow-black/20"
-            : "bg-transparent"
+        className={`fixed top-0 left-0 w-full z-[1000] transition-transform duration-500 ${
+          hidden ? "-translate-y-full" : "translate-y-0 backdrop-blur-sm bg-surface-elevated/50 border-b border-subtle/50"
         }`}
       >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
