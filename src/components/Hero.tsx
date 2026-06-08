@@ -31,7 +31,7 @@ export default function Hero() {
   const [isHovered, setIsHovered] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = !!useReducedMotion();
 
   // Premium smooth spring physics for the spotlight
   const springX = useSpring(mouseX, { stiffness: 40, damping: 15 });
